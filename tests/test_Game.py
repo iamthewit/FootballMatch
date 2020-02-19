@@ -3,6 +3,7 @@ from Club import Club
 from Game import Game
 from Forward import Forward
 from Player import Player
+from Score import Score
 from Team import Team
 
 class GameTest(unittest.TestCase):
@@ -19,3 +20,6 @@ class GameTest(unittest.TestCase):
     def test_goal(self):
         self.game.goal(self.homeTeam, self.homePlayer, 1)
         assert(1 == self.game.score.homeTeamScore)
+
+    def test_score(self):
+        assert(isinstance(self.game.score, Score))
