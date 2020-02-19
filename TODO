@@ -1,0 +1,17 @@
+Create factories to generate random teams, clubs, players
+
+Add methods to Game class:
+    - pass
+    - shot
+    - save
+    - tackle
+    - interception
+    - possession
+
+Manager class
+    - Team is managed by a manager
+
+Formation classes
+    - team has a formation
+    - formation is made up of players
+
