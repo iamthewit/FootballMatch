@@ -6,7 +6,12 @@ Add methods to Game class:
     - save
     - tackle
     - interception
+    - Have each of the above methods fire an event
+        - Create an event class and extend it to create ShotEvent, SaveEvent etc
+        - Create a GameEventFactory class which takes a Player and timeInSeconds arguments
+
     - possession
+        - this could be worked out based on all of the above events?
 
 Manager class
     - Team is managed by a manager

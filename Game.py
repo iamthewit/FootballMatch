@@ -12,11 +12,43 @@ class Game:
         # aggregate scores
         self.score = Score(0, 0)
     
-    def goal(self, scoringTeam: Team, scorer: Player, goalTimeInSeconds: int):
+    def getScore(self) -> Score:
+        return self.score
+
+    def getHomeTeam(self) -> Team:
+        return self.homeTeam
+
+    def getAwayTeam(self) -> Team:
+        return self.awayTeam
+
+    # TODO
+    def shot(self):
+        pass
+
+    # TODO
+    def save(self):
+        pass
+
+    # TODO
+    def tackle(self):
+        pass
+
+    # TODO - pass is a reserved word in python... :(
+    def passAttempt(self):
+        pass
+
+    # Not sure about the two pass methods yet, needs more thought...
+
+    # TODO
+    def passReceive(self):
+        pass
+
+    # TODO
+    def interception(self):
+        pass
+
+    def goal(self, scoringTeam: Team, scorer: Player, timeInSeconds: int):
         if self.homeTeam == scoringTeam:
             self.score.homeTeamScored()
         else:
             self.score.awayTeamScored()
-
-    def score(self):
-        return Score
