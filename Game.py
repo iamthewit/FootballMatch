@@ -3,23 +3,23 @@ from Score import Score
 from Team import Team
 
 class Game:
-
     def __init__(self, homeTeam: Team, awayTeam: Team):
-        self.homeTeam = homeTeam
-        self.awayTeam = awayTeam
-        # in the future this could be passed in when a Game instance is created
-        # this would help with games that are played over two legs and have 
+        self.__homeTeam = homeTeam
+        self.__awayTeam = awayTeam
+        
+        # In the future this could be passed in when a Game instance is created
+        # this would help with games that are played over two legs and have
         # aggregate scores
-        self.score = Score(0, 0)
-    
+        self.__score = Score(0, 0)
+
     def getScore(self) -> Score:
-        return self.score
+        return self.__score
 
     def getHomeTeam(self) -> Team:
-        return self.homeTeam
+        return self.__homeTeam
 
     def getAwayTeam(self) -> Team:
-        return self.awayTeam
+        return self.__awayTeam
 
     # TODO
     def shot(self):
@@ -47,8 +47,12 @@ class Game:
     def interception(self):
         pass
 
+    # TODO
+    def deflection(self):
+        pass
+
     def goal(self, scoringTeam: Team, scorer: Player, timeInSeconds: int):
-        if self.homeTeam == scoringTeam:
-            self.score.homeTeamScored()
+        if self.__homeTeam == scoringTeam:
+            self.__score.homeTeamScored()
         else:
-            self.score.awayTeamScored()
+            self.__score.awayTeamScored()

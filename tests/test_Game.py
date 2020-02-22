@@ -1,4 +1,6 @@
 import unittest
+from pprint import pprint
+
 from Club import Club
 from Game import Game
 from Forward import Forward
@@ -19,7 +21,8 @@ class GameTest(unittest.TestCase):
 
     def test_goal(self):
         self.game.goal(self.homeTeam, self.homePlayer, 1)
-        assert(1 == self.game.score.homeTeamScore)
+        
+        assert(1 == self.game.getScore().getHomeTeamScore())
 
     def test_score(self):
-        assert(isinstance(self.game.score, Score))
+        assert(isinstance(self.game.getScore(), Score))
