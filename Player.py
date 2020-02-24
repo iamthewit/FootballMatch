@@ -1,5 +1,5 @@
 from Club import Club
-from PositionInterface import PositionInterface
+from Position import PositionInterface
 
 class Player:
 
@@ -10,10 +10,10 @@ class Player:
         position: PositionInterface,
         club: Club
     ):
-        self.number = number
+        self.__number = number
         # make this a value object with first name, last name and shirt name
-        self.name = name
-        self.position = position
+        self.__name = name
+        self.__position = position
 
     def number(self) -> int:
         return self.number

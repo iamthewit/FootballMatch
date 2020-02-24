@@ -1,8 +1,8 @@
-from PositionInterface import PositionInterface
+from Position.PositionInterface import PositionInterface
 
 class Defender(PositionInterface):
     def __init__(self):
-        self.name = 'Defender'
+        self.__name = 'Defender'
 
     def name(self) -> str:
         return self.name

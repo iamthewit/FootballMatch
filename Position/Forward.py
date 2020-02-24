@@ -1,8 +1,8 @@
-from PositionInterface import PositionInterface
+from Position.PositionInterface import PositionInterface
 
 class Forward(PositionInterface):
     def __init__(self):
-        self.name = 'Forward'
+        self.__name = 'Forward'
 
     def name(self) -> str:
         return self.name

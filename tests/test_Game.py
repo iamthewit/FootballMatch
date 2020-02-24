@@ -3,7 +3,7 @@ from pprint import pprint
 
 from Club import Club
 from Game import Game
-from Forward import Forward
+from Position.Forward import Forward
 from Player import Player
 from Score import Score
 from Team import Team
