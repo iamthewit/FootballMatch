@@ -29,3 +29,7 @@ class GameTest(unittest.TestCase):
 
     def test_shot(self):
         self.game.shot(self.homePlayer, 10, True)
+        # TODO: in order to assert the event was dispatched
+        # we need to allow the event dispatcher to be injected 
+        # into the game class so that we can pass a mocked event
+        # dispatcher in in the test setup
