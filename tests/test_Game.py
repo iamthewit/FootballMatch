@@ -26,3 +26,6 @@ class GameTest(unittest.TestCase):
 
     def test_score(self):
         assert(isinstance(self.game.getScore(), Score))
+
+    def test_shot(self):
+        self.game.shot(self.homePlayer, 10, True)

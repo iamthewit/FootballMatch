@@ -1,6 +1,11 @@
 from Player import Player
 from Score import Score
 from Team import Team
+from GameAction.Shot import Shot
+
+from App.EventDispatcher import EventDispatcher
+
+import random
 
 class Game:
     def __init__(self, homeTeam: Team, awayTeam: Team):
@@ -12,6 +17,9 @@ class Game:
         # aggregate scores
         self.__score = Score(0, 0)
 
+        # TODO: inject this
+        self.__eventDispatcher = EventDispatcher()
+
     def getScore(self) -> Score:
         return self.__score
 
@@ -22,8 +30,9 @@ class Game:
         return self.__awayTeam
 
     # TODO
-    def shot(self):
-        pass
+    def shot(self, player: Player, timeInSeconds: int, onTarget: bool = False):
+        shot = Shot(player, timeInSeconds, onTarget)
+        self.__eventDispatcher.dispatchNow(shot)
 
     # TODO
     def save(self):
