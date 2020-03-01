@@ -1,5 +1,5 @@
 from FootballMatch.Club import Club
-from FootballMatch.Position import PositionInterface
+from FootballMatch.Position.PositionInterface import PositionInterface
 
 class Player:
 
@@ -16,10 +16,10 @@ class Player:
         self.__position = position
 
     def number(self) -> int:
-        return self.number
+        return self.__number
 
     def name(self) -> str:
-        return self.name
+        return self.__name
 
     def position(self) -> PositionInterface:
-        return self.position
+        return self.__position
