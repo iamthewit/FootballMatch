@@ -1,4 +1,4 @@
-from Position.PositionInterface import PositionInterface
+from FootballMatch.Position.PositionInterface import PositionInterface
 
 class GoalKeeper(PositionInterface):
     def __init__(self):

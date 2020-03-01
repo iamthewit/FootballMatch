@@ -1,6 +1,6 @@
 from abc import ABC
 
-from Player import Player
+from FootballMatch.Player import Player
 
 class AbstractGameAction(ABC):
     def __init__(self, player: Player, timeInSeconds: int):

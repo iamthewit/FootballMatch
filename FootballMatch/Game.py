@@ -1,7 +1,7 @@
-from Player import Player
-from Score import Score
-from Team import Team
-from GameAction.Shot import Shot
+from FootballMatch.Player import Player
+from FootballMatch.Score import Score
+from FootballMatch.Team import Team
+from FootballMatch.GameAction.Shot import Shot
 
 from App.EventDispatcher import EventDispatcher
 

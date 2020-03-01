@@ -1,4 +1,4 @@
-from Club import Club
+from FootballMatch.Club import Club
 
 class Team:
     def __init__(self, club: Club, home: bool = True):

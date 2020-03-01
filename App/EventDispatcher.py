@@ -1,4 +1,4 @@
-from GameAction.AbstractGameAction import AbstractGameAction
+from FootballMatch.GameAction.AbstractGameAction import AbstractGameAction
 from App.EventBus import EventBus
 
 class EventDispatcher:

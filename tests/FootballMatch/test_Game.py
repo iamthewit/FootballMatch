@@ -1,12 +1,12 @@
 import unittest
 from pprint import pprint
 
-from Club import Club
-from Game import Game
-from Position.Forward import Forward
-from Player import Player
-from Score import Score
-from Team import Team
+from FootballMatch.Club import Club
+from FootballMatch.Game import Game
+from FootballMatch.Position.Forward import Forward
+from FootballMatch.Player import Player
+from FootballMatch.Score import Score
+from FootballMatch.Team import Team
 
 class GameTest(unittest.TestCase):
     def setUp(self):

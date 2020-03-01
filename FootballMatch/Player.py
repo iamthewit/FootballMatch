@@ -1,5 +1,5 @@
-from Club import Club
-from Position import PositionInterface
+from FootballMatch.Club import Club
+from FootballMatch.Position import PositionInterface
 
 class Player:
 

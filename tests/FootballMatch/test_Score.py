@@ -1,7 +1,7 @@
 import unittest
 from pprint import pprint
 
-from Score import Score
+from FootballMatch.Score import Score
 
 class ScoreTest(unittest.TestCase):
     def setUp(self):
