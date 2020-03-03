@@ -23,8 +23,29 @@ class PlayerFactory:
 
         return name
 
+    def getRandomNumber(self):
+        return randrange(1, 99)
+
     def createDefenderForClub(self, club: Club):
-        number = randrange(1, 99)
+        number = self.getRandomNumber()
         name = self.getRandomName()
         
         return Player(number, name, Defender(), club)
+
+    def createForwardForClub(self, club: Club):
+        number = self.getRandomNumber()
+        name = self.getRandomName()
+        
+        return Player(number, name, Forward(), club)
+
+    def createGoalKeeperForClub(self, club: Club):
+        number = self.getRandomNumber()
+        name = self.getRandomName()
+        
+        return Player(number, name, GoalKeeper(), club)
+
+    def createMidfielderForClub(self, club: Club):
+        number = self.getRandomNumber()
+        name = self.getRandomName()
+        
+        return Player(number, name, Midfielder(), club)
