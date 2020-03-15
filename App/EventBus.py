@@ -2,6 +2,7 @@ from FootballMatch.GameAction.AbstractGameAction import AbstractGameAction
 from App.LogEventToFile import LogEventToFile
 
 class EventBus:
+    # TODO: should be retrieved from container, when we have one...
     listeners = {
         AbstractGameAction: LogEventToFile
     }

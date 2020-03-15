@@ -2,7 +2,6 @@ from FootballMatch.Club import Club
 from FootballMatch.Position.PositionInterface import PositionInterface
 
 class Player:
-
     def __init__(
         self,
         number: int,
@@ -11,7 +10,7 @@ class Player:
         club: Club
     ):
         self.__number = number
-        # make this a value object with first name, last name and shirt name
+        # TODO: make this a value object with first name, last name and shirt name
         self.__name = name
         self.__position = position
 

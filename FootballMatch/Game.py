@@ -29,7 +29,6 @@ class Game:
     def getAwayTeam(self) -> Team:
         return self.__awayTeam
 
-    # TODO
     def shot(self, player: Player, timeInSeconds: int, onTarget: bool = False):
         shot = Shot(player, timeInSeconds, onTarget)
         self.__eventDispatcher.dispatchNow(shot)

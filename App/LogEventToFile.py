@@ -5,6 +5,7 @@ class LogEventToFile:
         super().__init__()
 
     def handle(self, event: AbstractGameAction):
+        # TODO: Store the log file name in an overall config/.env file
         with open('event-log.txt', 'a') as eventLog:
             # TODO: log more details
 

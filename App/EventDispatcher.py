@@ -6,5 +6,6 @@ class EventDispatcher:
         super().__init__()
 
     def dispatchNow(self, gameAction: AbstractGameAction):
+        # TODO: inject this:
         eventBus = EventBus()
         eventBus.push(gameAction)
