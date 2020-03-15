@@ -1,17 +1,9 @@
 Create factories to generate random teams, clubs, players
 
-Add methods to Game class:
-    - pass
-    - shot
-    - save
-    - tackle
-    - interception
-    - Have each of the above methods fire an event
-        - Create an event class and extend it to create ShotEvent, SaveEvent etc
-        - Create a GameEventFactory class which takes a Player and timeInSeconds arguments
-
+Game class ideas:
     - possession
         - this could be worked out based on all of the above events?
+    - player position when an action occurs
 
 Manager class
     - Team is managed by a manager
@@ -20,3 +12,6 @@ Formation classes
     - team has a formation
     - formation is made up of players
 
+Add .env file
+Add overall config
+Add container
