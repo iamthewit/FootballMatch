@@ -12,6 +12,12 @@ Formation classes
     - team has a formation
     - formation is made up of players
 
+Think about how to deal with offside
+    - need to know all player positions when actions happen
+    - maybe player positions should be recorded independently of game actions?
+    - or maybe there should be an action for players that are not directly involved 
+    in the current play. Every second we could record each players PlayerPosition action?
+
 Add .env file
 Add overall config
 Add container

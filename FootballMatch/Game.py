@@ -19,12 +19,7 @@ class Game:
     def __init__(self, homeTeam: Team, awayTeam: Team, score: Score, eventDispatcher: EventDispatcher):
         self.__homeTeam = homeTeam
         self.__awayTeam = awayTeam
-        
-        # In the future this could be passed in when a Game instance is created
-        # this would help with games that are played over two legs and have
-        # aggregate scores
         self.__score = score
-
         self.__eventDispatcher = eventDispatcher
 
     def getScore(self) -> Score:
@@ -43,7 +38,7 @@ class Game:
             self.__score.awayTeamScored()
 
     # Game Actions
-    
+
     def shot(self, player: Player, timeInSeconds: int, onTarget: bool = False) -> Shot:
         shot = Shot(player, timeInSeconds, onTarget)
         self.__eventDispatcher.dispatchNow(shot)
@@ -92,3 +87,23 @@ class Game:
         self.__eventDispatcher.dispatchNow(run)
 
         return run
+
+    # TODO
+    def freeKick(self, player: Player, timeInSeconds: int) -> FreeKick:
+        pass
+
+    # TODO
+    def penalty(self, player: Player, timeInSeconds: int) -> Penalty:
+        pass
+
+    # TODO
+    def corner(self, player: Player, timeInSeconds: int) -> Corner:
+        pass
+
+    # TODO
+    def playerPosition(self, player: Player, timeInSeconds: int, positionX: int, positionY: int) -> PlayerPosition:
+        pass
+
+    # TODO
+    def kickOff(self, player: Player, timeInSeconds: int) -> KickOff:
+        pass
