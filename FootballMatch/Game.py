@@ -8,17 +8,16 @@ from App.EventDispatcher import EventDispatcher
 import random
 
 class Game:
-    def __init__(self, homeTeam: Team, awayTeam: Team):
+    def __init__(self, homeTeam: Team, awayTeam: Team, score: Score, eventDispatcher: EventDispatcher):
         self.__homeTeam = homeTeam
         self.__awayTeam = awayTeam
         
         # In the future this could be passed in when a Game instance is created
         # this would help with games that are played over two legs and have
         # aggregate scores
-        self.__score = Score(0, 0)
+        self.__score = score
 
-        # TODO: inject this
-        self.__eventDispatcher = EventDispatcher()
+        self.__eventDispatcher = eventDispatcher
 
     def getScore(self) -> Score:
         return self.__score

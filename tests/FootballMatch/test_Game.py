@@ -1,4 +1,6 @@
 import unittest
+from unittest.mock import MagicMock
+from unittest.mock import Mock
 from pprint import pprint
 
 from FootballMatch.Club import Club
@@ -7,6 +9,9 @@ from FootballMatch.Position.Forward import Forward
 from FootballMatch.Player import Player
 from FootballMatch.Score import Score
 from FootballMatch.Team import Team
+
+from App.EventDispatcher import EventDispatcher
+from App.EventBus import EventBus
 
 class GameTest(unittest.TestCase):
     def setUp(self):
@@ -17,7 +22,10 @@ class GameTest(unittest.TestCase):
         self.awayClub = Club('Away')
         self.awayTeam = Team(self.awayClub, False)
 
-        self.game = Game(self.homeTeam, self.awayTeam)
+        self.score = Score()
+        self.eventDispatcher = MagicMock()
+
+        self.game = Game(self.homeTeam, self.awayTeam, self.score, self.eventDispatcher)
 
     def test_goal(self):
         self.game.goal(self.homeTeam, self.homePlayer, 1)
@@ -29,7 +37,4 @@ class GameTest(unittest.TestCase):
 
     def test_shot(self):
         self.game.shot(self.homePlayer, 10, True)
-        # TODO: in order to assert the event was dispatched
-        # we need to allow the event dispatcher to be injected
-        # into the game class so that we can pass a mocked event
-        # dispatcher in in the test setup
+        self.eventDispatcher.dispatchNow.assert_called_once()

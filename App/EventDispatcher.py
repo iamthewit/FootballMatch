@@ -2,10 +2,9 @@ from FootballMatch.GameAction.AbstractGameAction import AbstractGameAction
 from App.EventBus import EventBus
 
 class EventDispatcher:
-    def __init__(self):
+    def __init__(self, eventBus: EventBus):
         super().__init__()
+        self.__eventBus = eventBus
 
     def dispatchNow(self, gameAction: AbstractGameAction):
-        # TODO: inject this:
-        eventBus = EventBus()
-        eventBus.push(gameAction)
+        self.__eventBus.push(gameAction)
