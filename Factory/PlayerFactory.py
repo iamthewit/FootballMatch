@@ -14,17 +14,6 @@ class PlayerFactory:
     def __init__(self):
         super().__init__()
 
-    def get_random_name(self):
-        word_file_path = "/usr/share/dict/words"
-        word_file = open(word_file_path)
-        name = choice(word_file.read().splitlines())
-        word_file.close()
-
-        return name
-
-    def get_random_number(self):
-        return randrange(1, 99)
-
     def create_defender_for_club(self, club: Club):
         number = self.get_random_number()
         name = self.get_random_name()
@@ -48,3 +37,14 @@ class PlayerFactory:
         name = self.get_random_name()
         
         return Player(number, name, Midfielder(), club)
+
+    def get_random_name(self):
+        word_file_path = "/usr/share/dict/words"
+        word_file = open(word_file_path)
+        name = choice(word_file.read().splitlines())
+        word_file.close()
+
+        return name
+
+    def get_random_number(self):
+        return randrange(1, 99)
