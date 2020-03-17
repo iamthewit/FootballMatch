@@ -1,6 +1,7 @@
 from FootballMatch.Club import Club
 from FootballMatch.Position.PositionInterface import PositionInterface
 
+
 class Player:
     def __init__(
         self,

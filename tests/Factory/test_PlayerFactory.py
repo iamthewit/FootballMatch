@@ -11,34 +11,35 @@ from FootballMatch.Position.Midfielder import Midfielder
 
 from pprint import pprint
 
+
 class PlayerFactoryTest(unittest.TestCase):
     def setUp(self):
         self.factory = PlayerFactory()
 
     def test_createDefenderForClub(self):
         club = Club('Test Club')
-        player = self.factory.createDefenderForClub(club)
+        player = self.factory.create_defender_for_club(club)
 
         assert(isinstance(player, Player))
         assert(isinstance(player.position(), Defender))
 
     def test_createForwardForClub(self):
         club = Club('Test Club')
-        player = self.factory.createForwardForClub(club)
+        player = self.factory.create_forward_for_club(club)
 
         assert(isinstance(player, Player))
         assert(isinstance(player.position(), Forward))
 
     def test_createGoalKeeperForClub(self):
         club = Club('Test Club')
-        player = self.factory.createGoalKeeperForClub(club)
+        player = self.factory.create_goal_keeper_for_club(club)
 
         assert(isinstance(player, Player))
         assert(isinstance(player.position(), GoalKeeper))
 
     def test_createMidfielderForClub(self):
         club = Club('Test Club')
-        player = self.factory.createMidfielderForClub(club)
+        player = self.factory.create_midfielder_for_club(club)
 
         assert(isinstance(player, Player))
         assert(isinstance(player.position(), Midfielder))

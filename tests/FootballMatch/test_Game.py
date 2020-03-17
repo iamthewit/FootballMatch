@@ -19,8 +19,6 @@ from FootballMatch.GameAction.Save import Save
 from FootballMatch.GameAction.Shot import Shot
 from FootballMatch.GameAction.Tackle import Tackle
 
-from App.EventDispatcher import EventDispatcher
-from App.EventBus import EventBus
 
 class GameTest(unittest.TestCase):
     def setUp(self):
@@ -39,55 +37,55 @@ class GameTest(unittest.TestCase):
     def test_goal(self):
         self.game.goal(self.homeTeam, self.homePlayer, 1)
         
-        assert(1 == self.game.getScore().getHomeTeamScore())
+        assert(1 == self.game.get_score().get_home_team_score())
 
     def test_score(self):
-        assert(isinstance(self.game.getScore(), Score))
+        assert(isinstance(self.game.get_score(), Score))
 
     def test_shot(self):
         shot = self.game.shot(self.homePlayer, 10, True)
 
-        self.eventDispatcher.dispatchNow.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_once()
         assert(isinstance(shot, Shot))
     
     def test_save(self):
         save = self.game.save(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatchNow.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_once()
         assert(isinstance(save, Save))
 
     def test_tackle(self):
         tackle = self.game.tackle(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatchNow.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_once()
         assert(isinstance(tackle, Tackle))
     
     def test_passAttempt(self):
-        passAttempt = self.game.passAttempt(self.homePlayer, 10)
+        pass_attempt = self.game.pass_attempt(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatchNow.assert_called_once()
-        assert(isinstance(passAttempt, PassAttempt))
+        self.eventDispatcher.dispatch_now.assert_called_once()
+        assert(isinstance(pass_attempt, PassAttempt))
 
     def test_passReceive(self):
-        passReceive = self.game.passReceive(self.homePlayer, 10)
+        pass_receive = self.game.pass_receive(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatchNow.assert_called_once()
-        assert(isinstance(passReceive, PassReceive))
+        self.eventDispatcher.dispatch_now.assert_called_once()
+        assert(isinstance(pass_receive, PassReceive))
 
     def test_interception(self):
         interception = self.game.interception(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatchNow.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_once()
         assert(isinstance(interception, Interception))
 
     def test_deflection(self):
         deflection = self.game.deflection(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatchNow.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_once()
         assert(isinstance(deflection, Deflection))
 
     def test_run(self):
         run = self.game.run(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatchNow.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_once()
         assert(isinstance(run, Run))

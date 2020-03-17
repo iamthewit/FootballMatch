@@ -1,5 +1,6 @@
 from FootballMatch.GameAction.AbstractGameAction import AbstractGameAction
 
+
 class LogEventToFile:
     def __init__(self):
         super().__init__()

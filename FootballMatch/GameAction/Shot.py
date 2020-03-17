@@ -1,6 +1,7 @@
 from FootballMatch.GameAction.AbstractGameAction import AbstractGameAction
 from FootballMatch.Player import Player
 
+
 class Shot(AbstractGameAction):
-    def __init__(self, player: Player, timeInSeconds: int, onTarget: bool):
-        super().__init__(player, timeInSeconds)
+    def __init__(self, player: Player, time_in_seconds: int, on_target: bool):
+        super().__init__(player, time_in_seconds)

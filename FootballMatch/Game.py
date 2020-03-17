@@ -13,97 +13,96 @@ from FootballMatch.GameAction.Tackle import Tackle
 
 from App.EventDispatcher import EventDispatcher
 
-import random
 
 class Game:
-    def __init__(self, homeTeam: Team, awayTeam: Team, score: Score, eventDispatcher: EventDispatcher):
-        self.__homeTeam = homeTeam
-        self.__awayTeam = awayTeam
+    def __init__(self, home_team: Team, away_team: Team, score: Score, event_dispatcher: EventDispatcher):
+        self.__homeTeam = home_team
+        self.__awayTeam = away_team
         self.__score = score
-        self.__eventDispatcher = eventDispatcher
+        self.__eventDispatcher = event_dispatcher
 
-    def getScore(self) -> Score:
+    def get_score(self) -> Score:
         return self.__score
 
-    def getHomeTeam(self) -> Team:
+    def get_home_team(self) -> Team:
         return self.__homeTeam
 
-    def getAwayTeam(self) -> Team:
+    def get_away_team(self) -> Team:
         return self.__awayTeam
 
-    def goal(self, scoringTeam: Team, scorer: Player, timeInSeconds: int):
-        if self.__homeTeam == scoringTeam:
-            self.__score.homeTeamScored()
+    def goal(self, scoring_team: Team, scorer: Player, time_in_seconds: int):
+        if self.__homeTeam == scoring_team:
+            self.__score.home_team_scored()
         else:
-            self.__score.awayTeamScored()
+            self.__score.away_team_scored()
 
     # Game Actions
 
-    def shot(self, player: Player, timeInSeconds: int, onTarget: bool = False) -> Shot:
-        shot = Shot(player, timeInSeconds, onTarget)
-        self.__eventDispatcher.dispatchNow(shot)
+    def shot(self, player: Player, time_in_seconds: int, on_target: bool = False) -> Shot:
+        shot = Shot(player, time_in_seconds, on_target)
+        self.__eventDispatcher.dispatch_now(shot)
 
         return shot
 
-    def save(self, player: Player, timeInSeconds: int) -> Save:
+    def save(self, player: Player, time_in_seconds: int) -> Save:
         # TODO: check that player position is GoalKeeper
-        save = Save(player, timeInSeconds)
-        self.__eventDispatcher.dispatchNow(save)
+        save = Save(player, time_in_seconds)
+        self.__eventDispatcher.dispatch_now(save)
 
         return save
 
-    def tackle(self, player: Player, timeInSeconds: int) -> Tackle:
-        tackle = Tackle(player, timeInSeconds)
-        self.__eventDispatcher.dispatchNow(tackle)
+    def tackle(self, player: Player, time_in_seconds: int) -> Tackle:
+        tackle = Tackle(player, time_in_seconds)
+        self.__eventDispatcher.dispatch_now(tackle)
 
         return tackle
 
-    def passAttempt(self, player: Player, timeInSeconds: int) -> PassAttempt:
-        passAttempt = PassAttempt(player, timeInSeconds)
-        self.__eventDispatcher.dispatchNow(passAttempt)
+    def pass_attempt(self, player: Player, time_in_seconds: int) -> PassAttempt:
+        pass_attempt = PassAttempt(player, time_in_seconds)
+        self.__eventDispatcher.dispatch_now(pass_attempt)
 
-        return passAttempt
+        return pass_attempt
 
-    def passReceive(self, player: Player, timeInSeconds: int) -> PassReceive:
-        passReceive = PassReceive(player, timeInSeconds)
-        self.__eventDispatcher.dispatchNow(passReceive)
+    def pass_receive(self, player: Player, time_in_seconds: int) -> PassReceive:
+        pass_receive = PassReceive(player, time_in_seconds)
+        self.__eventDispatcher.dispatch_now(pass_receive)
 
-        return passReceive
+        return pass_receive
 
-    def interception(self, player: Player, timeInSeconds: int) -> Interception:
-        interception = Interception(player, timeInSeconds)
-        self.__eventDispatcher.dispatchNow(interception)
+    def interception(self, player: Player, time_in_seconds: int) -> Interception:
+        interception = Interception(player, time_in_seconds)
+        self.__eventDispatcher.dispatch_now(interception)
 
         return interception
 
-    def deflection(self, player: Player, timeInSeconds: int) -> Deflection:
-        deflection = Deflection(player, timeInSeconds)
-        self.__eventDispatcher.dispatchNow(deflection)
+    def deflection(self, player: Player, time_in_seconds: int) -> Deflection:
+        deflection = Deflection(player, time_in_seconds)
+        self.__eventDispatcher.dispatch_now(deflection)
 
         return deflection
 
-    def run(self, player: Player, timeInSeconds: int) -> Run:
-        run = Run(player, timeInSeconds)
-        self.__eventDispatcher.dispatchNow(run)
+    def run(self, player: Player, time_in_seconds: int) -> Run:
+        run = Run(player, time_in_seconds)
+        self.__eventDispatcher.dispatch_now(run)
 
         return run
 
     # TODO
-    def freeKick(self, player: Player, timeInSeconds: int) -> FreeKick:
-        pass
+    # def freeKick(self, player: Player, timeInSeconds: int) -> FreeKick:
+    #     pass
 
     # TODO
-    def penalty(self, player: Player, timeInSeconds: int) -> Penalty:
-        pass
+    # def penalty(self, player: Player, timeInSeconds: int) -> Penalty:
+    #     pass
 
     # TODO
-    def corner(self, player: Player, timeInSeconds: int) -> Corner:
-        pass
+    # def corner(self, player: Player, timeInSeconds: int) -> Corner:
+    #     pass
 
     # TODO
-    def playerPosition(self, player: Player, timeInSeconds: int, positionX: int, positionY: int) -> PlayerPosition:
-        pass
+    # def playerPosition(self, player: Player, timeInSeconds: int, positionX: int, positionY: int) -> PlayerPosition:
+    #     pass
 
     # TODO
-    def kickOff(self, player: Player, timeInSeconds: int) -> KickOff:
-        pass
+    # def kickOff(self, player: Player, timeInSeconds: int) -> KickOff:
+    #     pass

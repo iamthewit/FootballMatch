@@ -1,27 +1,27 @@
 import unittest
-from pprint import pprint
 
 from FootballMatch.Score import Score
+
 
 class ScoreTest(unittest.TestCase):
     def setUp(self):
         self.score = Score()
 
     def test_initialScore(self):
-        assert(0 == self.score.getHomeTeamScore())
+        assert(0 == self.score.get_home_team_score())
 
     def test_homeTeamScoring(self):
-        self.score.homeTeamScored()
+        self.score.home_team_scored()
         
-        assert(1 == self.score.getHomeTeamScore())
+        assert(1 == self.score.get_home_team_score())
 
     def test_awayTeamScoring(self):
-        self.score.awayTeamScored()
+        self.score.away_team_scored()
         
-        assert(1 == self.score.getAwayTeamScore())
+        assert(1 == self.score.get_away_team_score())
 
     def test_formattedScore(self):
-        self.score.homeTeamScored()
-        self.score.awayTeamScored()
+        self.score.home_team_scored()
+        self.score.away_team_scored()
 
-        assert("1 - 1" == self.score.formattedScore())
+        assert("1 - 1" == self.score.formatted_score())

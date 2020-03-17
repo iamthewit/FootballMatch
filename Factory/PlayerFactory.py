@@ -9,43 +9,42 @@ from FootballMatch.Position.Forward import Forward
 from FootballMatch.Position.GoalKeeper import GoalKeeper
 from FootballMatch.Position.Midfielder import Midfielder
 
-from pprint import pprint
 
 class PlayerFactory:
     def __init__(self):
         super().__init__()
 
-    def getRandomName(self):
-        wordFilePath = "/usr/share/dict/words"
-        wordFile = open(wordFilePath)
-        name = choice(wordFile.read().splitlines())
-        wordFile.close()
+    def get_random_name(self):
+        word_file_path = "/usr/share/dict/words"
+        word_file = open(word_file_path)
+        name = choice(word_file.read().splitlines())
+        word_file.close()
 
         return name
 
-    def getRandomNumber(self):
+    def get_random_number(self):
         return randrange(1, 99)
 
-    def createDefenderForClub(self, club: Club):
-        number = self.getRandomNumber()
-        name = self.getRandomName()
+    def create_defender_for_club(self, club: Club):
+        number = self.get_random_number()
+        name = self.get_random_name()
         
         return Player(number, name, Defender(), club)
 
-    def createForwardForClub(self, club: Club):
-        number = self.getRandomNumber()
-        name = self.getRandomName()
+    def create_forward_for_club(self, club: Club):
+        number = self.get_random_number()
+        name = self.get_random_name()
         
         return Player(number, name, Forward(), club)
 
-    def createGoalKeeperForClub(self, club: Club):
-        number = self.getRandomNumber()
-        name = self.getRandomName()
+    def create_goal_keeper_for_club(self, club: Club):
+        number = self.get_random_number()
+        name = self.get_random_name()
         
         return Player(number, name, GoalKeeper(), club)
 
-    def createMidfielderForClub(self, club: Club):
-        number = self.getRandomNumber()
-        name = self.getRandomName()
+    def create_midfielder_for_club(self, club: Club):
+        number = self.get_random_number()
+        name = self.get_random_name()
         
         return Player(number, name, Midfielder(), club)

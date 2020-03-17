@@ -1,19 +1,19 @@
 class Score:
-    def __init__(self, homeTeamScore: int = 0, awayTeamScore: int = 0):
-        self.__homeTeamScore = homeTeamScore
-        self.__awayTeamScore = awayTeamScore
+    def __init__(self, home_team_score: int = 0, away_team_score: int = 0):
+        self.__homeTeamScore = home_team_score
+        self.__awayTeamScore = away_team_score
 
-    def getHomeTeamScore(self) -> int:
+    def get_home_team_score(self) -> int:
         return self.__homeTeamScore
 
-    def getAwayTeamScore(self) -> int:
+    def get_away_team_score(self) -> int:
         return self.__awayTeamScore
 
-    def homeTeamScored(self):
+    def home_team_scored(self):
         self.__homeTeamScore += 1
     
-    def awayTeamScored(self):
+    def away_team_scored(self):
         self.__awayTeamScore += 1
 
-    def formattedScore(self) -> str:
+    def formatted_score(self) -> str:
         return "{} - {}".format(self.__homeTeamScore, self.__awayTeamScore)
