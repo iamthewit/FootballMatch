@@ -1,3 +1,9 @@
+# TODO: move this to a basic start script in the root directory
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
+
+import random
 from App.EventBus import EventBus
 from App.EventDispatcher import EventDispatcher
 from Factory.ClubFactory import ClubFactory
@@ -40,7 +46,7 @@ class StartGame:
         away_defenders = []
         for i in range(0, 4):
             away_defender = player_factory.create_defender_for_club(away_club)
-            away_defender.append(away_defender)
+            away_defenders.append(away_defender)
 
         # Generate 8 midfielders
         # 4 midfielders for the home club
@@ -68,6 +74,10 @@ class StartGame:
             away_forward = player_factory.create_forward_for_club(away_club)
             away_forwards.append(away_forward)
 
+        home_players = home_defenders + home_forwards + home_midfielders + [home_keeper]
+        away_players = home_defenders + home_forwards + home_midfielders + [home_keeper]
+        all_players = home_players + away_players
+
         # Create a Game object
         score = Score()
         event_bus = EventBus()
@@ -75,9 +85,29 @@ class StartGame:
 
         game = Game(home_team, away_team, score, event_dispatcher)
 
+        game_methods = [
+            'interception',
+            'pass_attempt',
+            'pass_receive',
+            'run',
+            'save',
+            'shot',
+            'tackle'
+        ]
+
+        # TODO: add goal method - it is a special case, it has different parameters
+
         # Randomly call game action methods on Game object
         # until we reach 90 minutes worth of seconds
+        for i in range(0, 90):
+            method = random.choice(game_methods)
+            player = random.choice(all_players)
+            getattr(game, method)(player, i * 60)
 
         # Check the event log to see what happened...
 
         # TODO: Generate stats based on the events...
+
+
+# TODO: move this to a simple start script
+StartGame()
