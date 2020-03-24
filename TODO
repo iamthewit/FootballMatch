@@ -1,7 +1,3 @@
-Move all code that is not tests into a src directory
-
-Add execute.py script to call StartGame
-
 Create rules around when actions can occur
     - pass_receive can only happen after pass_attempt
     - interception can only occur after shot/pass_attempt

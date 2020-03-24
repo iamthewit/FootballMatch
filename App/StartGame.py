@@ -1,8 +1,3 @@
-# TODO: move this to a basic start script in the root directory
-import os
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
-
 import random
 from App.EventBus import EventBus
 from App.EventDispatcher import EventDispatcher
@@ -107,7 +102,3 @@ class StartGame:
         # Check the event log to see what happened...
 
         # TODO: Generate stats based on the events...
-
-
-# TODO: move this to a simple start script
-StartGame()
