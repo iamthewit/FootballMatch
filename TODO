@@ -7,9 +7,16 @@ Game class ideas:
     - possession
         - this could be worked out based on all of the above events?
     - player position when an action occurs
+    - substitutions
+    - time added on
 
 Manager class
     - Team is managed by a manager
+
+Player Class
+    - designate player as captain
+    - ensure only one captain per team per match
+    - if captain is substituted make a new on field player captain
 
 Formation classes
     - team has a formation

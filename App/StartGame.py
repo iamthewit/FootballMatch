@@ -19,10 +19,6 @@ class StartGame:
         # TODO:
         # Generate 2 managers
 
-        # Generate 2 Teams
-        home_team = Team(home_club)
-        away_team = Team(away_club, False)
-
         # Generate 22 players
         player_factory = PlayerFactory()
 
@@ -57,21 +53,27 @@ class StartGame:
             away_midfielders.append(away_midfielder)
                 
         # Generate 4 forwards
-        # 4 forwards for the home club
+        # 2 forwards for the home club
         home_forwards = []
-        for i in range(0, 4):
+        for i in range(0, 2):
             home_forward = player_factory.create_forward_for_club(home_club)
             home_forwards.append(home_forward)
 
-        # 4 forwards for the away club
+        # 2 forwards for the away club
         away_forwards = []
-        for i in range(0, 4):
+        for i in range(0, 2):
             away_forward = player_factory.create_forward_for_club(away_club)
             away_forwards.append(away_forward)
 
         home_players = home_defenders + home_forwards + home_midfielders + [home_keeper]
-        away_players = home_defenders + home_forwards + home_midfielders + [home_keeper]
+        away_players = away_defenders + away_forwards + away_midfielders + [away_keeper]
         all_players = home_players + away_players
+
+        # Generate 2 Teams
+        home_team = Team(home_club, home_players)
+        away_team = Team(away_club, away_players, False)
+
+        teams = [home_team, away_team]
 
         # Create a Game object
         score = Score()
@@ -92,9 +94,27 @@ class StartGame:
 
         # TODO: add goal method - it is a special case, it has different parameters
 
-        # Randomly call game action methods on Game object
-        # until we reach 90 minutes worth of seconds
-        for i in range(0, 90):
+        # decide who gets to kick off
+        winner_of_coin_toss = random.choice(teams)
+        player_to_kick_off_first_half = random.choice(winner_of_coin_toss.players())
+
+        # first half
+        game.kick_off(player_to_kick_off_first_half, 0)
+
+        for i in range(0, 45):
+            method = random.choice(game_methods)
+            player = random.choice(all_players)
+            getattr(game, method)(player, i * 60)
+
+        # second half
+        teams_copy = teams.copy()
+        teams_copy.remove(winner_of_coin_toss)
+        loser_of_coin_toss = teams_copy[0]
+
+        player_to_kick_off_second_half = random.choice(loser_of_coin_toss.players())
+        game.kick_off(player_to_kick_off_second_half, 45*60)
+
+        for i in range(45, 90):
             method = random.choice(game_methods)
             player = random.choice(all_players)
             getattr(game, method)(player, i * 60)

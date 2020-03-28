@@ -4,6 +4,7 @@ from FootballMatch.Team import Team
 
 from FootballMatch.GameAction.Deflection import Deflection
 from FootballMatch.GameAction.Interception import Interception
+from FootballMatch.GameAction.KickOff import KickOff
 from FootballMatch.GameAction.PassAttempt import PassAttempt
 from FootballMatch.GameAction.PassReceive import PassReceive
 from FootballMatch.GameAction.Run import Run
@@ -103,6 +104,8 @@ class Game:
     # def playerPosition(self, player: Player, timeInSeconds: int, positionX: int, positionY: int) -> PlayerPosition:
     #     pass
 
-    # TODO
-    # def kickOff(self, player: Player, timeInSeconds: int) -> KickOff:
-    #     pass
+    def kick_off(self, player: Player, time_in_seconds: int) -> KickOff:
+        kick_off = KickOff(player, time_in_seconds)
+        self.__eventDispatcher.dispatch_now(kick_off)
+
+        return kick_off

@@ -12,6 +12,7 @@ from FootballMatch.Team import Team
 
 from FootballMatch.GameAction.Deflection import Deflection
 from FootballMatch.GameAction.Interception import Interception
+from FootballMatch.GameAction.KickOff import KickOff
 from FootballMatch.GameAction.PassAttempt import PassAttempt
 from FootballMatch.GameAction.PassReceive import PassReceive
 from FootballMatch.GameAction.Run import Run
@@ -23,11 +24,12 @@ from FootballMatch.GameAction.Tackle import Tackle
 class GameTest(unittest.TestCase):
     def setUp(self):
         self.homeClub = Club('Home')
-        self.homeTeam = Team(self.homeClub)
         self.homePlayer = Player(9, "Cross", Forward(), self.homeClub)
+        self.homeTeam = Team(self.homeClub, [self.homePlayer])
 
         self.awayClub = Club('Away')
-        self.awayTeam = Team(self.awayClub, False)
+        self.awayPlayer = Player(9, "Thomas", Forward(), self.awayClub)
+        self.awayTeam = Team(self.awayClub, [self.awayPlayer], False)
 
         self.score = Score()
         self.eventDispatcher = MagicMock()
@@ -89,3 +91,9 @@ class GameTest(unittest.TestCase):
 
         self.eventDispatcher.dispatch_now.assert_called_once()
         assert(isinstance(run, Run))
+
+    def test_kick_off(self):
+        kick_off = self.game.kick_off(self.homePlayer, 0)
+
+        self.eventDispatcher.dispatch_now.assert_called_once()
+        assert(isinstance(kick_off, KickOff))
