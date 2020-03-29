@@ -14,8 +14,8 @@ class LogEventToFile:
             now = datetime.now()
             line = "[%s] %d:%02d - %s - %s" % (
                 now.strftime("%X"),
-                event.timeInSeconds / 60,
-                event.timeInSeconds % 60,
+                event.time_in_seconds / 60,
+                event.time_in_seconds % 60,
                 event.player.name(),
                 type(event).__name__,
             )

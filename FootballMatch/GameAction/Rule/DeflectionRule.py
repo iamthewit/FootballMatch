@@ -21,9 +21,14 @@ class DeflectionRule(AbstractGameActionRule):
         if not isinstance(self.previous_game_action, self.valid_previous_action_types):
             return False
 
-        # if player who committed previous action is the same player that cause the deflection return false
+        # If player who committed previous action is the same player that caused the deflection
+        if self.game_action.player.__eq__(self.previous_game_action.player):
+            return False
 
-        # if the time of the action is less than the time of the previous action
-        # (this could be accounted for in the super class??)
+        # If the time of the action is less than the time of the previous action
+        if self.game_action.time_in_seconds < self.previous_game_action.time_in_seconds:
+            return False
+            # TODO: this could be accounted for in the super class maybe?
+            # depends if it's valid for all rules?
 
         return True

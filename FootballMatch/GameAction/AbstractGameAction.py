@@ -9,5 +9,5 @@ from FootballMatch.Player import Player
 class AbstractGameAction(ABC):
     def __init__(self, player: Player, time_in_seconds: int):
         self.player = player
-        self.timeInSeconds = time_in_seconds
+        self.time_in_seconds = time_in_seconds
         super().__init__()
