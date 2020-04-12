@@ -1,5 +1,8 @@
 # TODO
 
+WIP:
+    - Add tests for Interception Rule
+
 Create rules around when actions can occur:
 - pass_receive can only happen after pass_attempt
 - interception can only occur after shot/pass_attempt
@@ -38,18 +41,6 @@ In order for a game to flow actions can only happen in certain circumstances:
     - `Interception` by a `Player` of the opposing `Team`
     - `Deflection` by a `Player` of either `Team` 
     - `Goal` (Note: Goals are not game actions, need to think about how they are recorded in a `Game`)
-
-Create `GameActionRule` abstract class and extend the class for each Game Action (`KickOffRule`, `PassAttemptRule`, `TackleRule`, etc)
-A `GameActionRule` will take the following parameters:
-    - Previous Game Action
-    - Game Action
-A `GameActionRule` will raise an `Error` if the given Game Action is invalid based on the Previous Game Action
-
-Create a GameEngine class in App module that can be passed a game object and keeps track of all game actions.
-Knowledge of the game and game actions will allow the game engine to determine what can happen after each action.
-`GameEngine` should instantiate `GameActionRule` based on the given `GameAction` to determine if it is valid or not.
-    - Create a `GameActionRuleFactory` take a `GameAction` as a param and return a `GameActionRule`
-`GameEngine` should return a list of possible next actions after a valid action has occurred.
 
 Game class ideas:
 - possession

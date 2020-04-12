@@ -9,7 +9,7 @@ from FootballMatch.GameAction.Shot import Shot
 from FootballMatch.GameAction.Rule.AbstractGameActionRule import AbstractGameActionRule
 
 
-class DeflectionRule(AbstractGameActionRule):
+class InterceptionRule(AbstractGameActionRule):
     valid_previous_action_types = (
         PassAttempt,
         Shot
@@ -18,7 +18,6 @@ class DeflectionRule(AbstractGameActionRule):
     valid_next_action_types = (
         PassAttempt,
         Run,
-        Save,
         Shot
     )
 
@@ -30,14 +29,12 @@ class DeflectionRule(AbstractGameActionRule):
         if not isinstance(self.previous_game_action, self.valid_previous_action_types):
             return False
 
-        # If player who committed previous action is the same player that caused the deflection
+        # If player who committed previous action is the same player that caused the interception
         if self.game_action.player.__eq__(self.previous_game_action.player):
             return False
 
         # If the time of the action is less than the time of the previous action
         if self.game_action.time_in_seconds < self.previous_game_action.time_in_seconds:
             return False
-            # TODO: this could be accounted for in the super class maybe?
-            # depends if it's valid for all rules?
 
         return True

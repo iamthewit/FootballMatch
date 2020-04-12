@@ -1,3 +1,4 @@
+from FootballMatch.GameAction.Rule.DeflectionRule import DeflectionRule
 from FootballMatch.Player import Player
 from FootballMatch.Score import Score
 from FootballMatch.Team import Team
@@ -21,6 +22,7 @@ class Game:
         self.__awayTeam = away_team
         self.__score = score
         self.__eventDispatcher = event_dispatcher
+        self.__actionLog = []
 
     def get_score(self) -> Score:
         return self.__score
@@ -37,54 +39,75 @@ class Game:
         else:
             self.__score.away_team_scored()
 
+    def get_last_action(self):
+        return self.__actionLog[-1]
+
     # Game Actions
 
     def shot(self, player: Player, time_in_seconds: int, on_target: bool = False) -> Shot:
         shot = Shot(player, time_in_seconds, on_target)
+
         self.__eventDispatcher.dispatch_now(shot)
+        self.__actionLog.append(shot)
 
         return shot
 
     def save(self, player: Player, time_in_seconds: int) -> Save:
         # TODO: check that player position is GoalKeeper
         save = Save(player, time_in_seconds)
+
         self.__eventDispatcher.dispatch_now(save)
+        self.__actionLog.append(save)
 
         return save
 
     def tackle(self, player: Player, time_in_seconds: int) -> Tackle:
         tackle = Tackle(player, time_in_seconds)
+
         self.__eventDispatcher.dispatch_now(tackle)
+        self.__actionLog.append(tackle)
 
         return tackle
 
     def pass_attempt(self, player: Player, time_in_seconds: int) -> PassAttempt:
         pass_attempt = PassAttempt(player, time_in_seconds)
+
         self.__eventDispatcher.dispatch_now(pass_attempt)
+        self.__actionLog.append(pass_attempt)
 
         return pass_attempt
 
     def pass_receive(self, player: Player, time_in_seconds: int) -> PassReceive:
         pass_receive = PassReceive(player, time_in_seconds)
+
         self.__eventDispatcher.dispatch_now(pass_receive)
+        self.__actionLog.append(pass_receive)
 
         return pass_receive
 
     def interception(self, player: Player, time_in_seconds: int) -> Interception:
         interception = Interception(player, time_in_seconds)
+
         self.__eventDispatcher.dispatch_now(interception)
+        self.__actionLog.append(interception)
 
         return interception
 
     def deflection(self, player: Player, time_in_seconds: int) -> Deflection:
         deflection = Deflection(player, time_in_seconds)
+        deflection_rule = DeflectionRule(deflection, self.get_last_action())
+        deflection_rule.check()
+
         self.__eventDispatcher.dispatch_now(deflection)
+        self.__actionLog.append(deflection)
 
         return deflection
 
     def run(self, player: Player, time_in_seconds: int) -> Run:
         run = Run(player, time_in_seconds)
+
         self.__eventDispatcher.dispatch_now(run)
+        self.__actionLog.append(run)
 
         return run
 
