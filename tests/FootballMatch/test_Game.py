@@ -36,6 +36,10 @@ class GameTest(unittest.TestCase):
 
         self.game = Game(self.homeTeam, self.awayTeam, self.score, self.eventDispatcher)
 
+    def start_game_with_kick_off(self):
+        self.game.kick_off(self.awayPlayer, 0)
+        self.game.pass_attempt(self.awayPlayer, 0)
+
     def test_goal(self):
         self.game.goal(self.homeTeam, self.homePlayer, 1)
         
@@ -75,15 +79,19 @@ class GameTest(unittest.TestCase):
         assert(isinstance(pass_receive, PassReceive))
 
     def test_interception(self):
+        self.start_game_with_kick_off()
+
         interception = self.game.interception(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatch_now.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_with(interception)
         assert(isinstance(interception, Interception))
 
     def test_deflection(self):
+        self.start_game_with_kick_off()
+
         deflection = self.game.deflection(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatch_now.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_with(deflection)
         assert(isinstance(deflection, Deflection))
 
     def test_run(self):

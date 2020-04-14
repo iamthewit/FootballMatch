@@ -1,6 +1,7 @@
 from typing import Optional
 
 from FootballMatch.GameAction.AbstractGameAction import AbstractGameAction
+from FootballMatch.GameAction.Deflection import Deflection
 from FootballMatch.GameAction.PassAttempt import PassAttempt
 from FootballMatch.GameAction.Run import Run
 from FootballMatch.GameAction.Save import Save
@@ -11,6 +12,10 @@ from FootballMatch.GameAction.Rule.AbstractGameActionRule import AbstractGameAct
 
 class InterceptionRule(AbstractGameActionRule):
     valid_previous_action_types = (
+        # TODO: decide if a deflection can be intercepted
+        # How else would another player pick up the ball after a deflection?
+        # Maybe a new action to 'collect' a loose ball?
+        Deflection,
         PassAttempt,
         Shot
     )

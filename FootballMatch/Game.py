@@ -1,4 +1,5 @@
 from FootballMatch.GameAction.Rule.DeflectionRule import DeflectionRule
+from FootballMatch.GameAction.Rule.InterceptionRule import InterceptionRule
 from FootballMatch.Player import Player
 from FootballMatch.Score import Score
 from FootballMatch.Team import Team
@@ -87,6 +88,8 @@ class Game:
 
     def interception(self, player: Player, time_in_seconds: int) -> Interception:
         interception = Interception(player, time_in_seconds)
+        interception_rule = InterceptionRule(interception, self.get_last_action())
+        interception_rule.check()
 
         self.__eventDispatcher.dispatch_now(interception)
         self.__actionLog.append(interception)

@@ -3,11 +3,8 @@
 WIP:
     - Add tests for Interception Rule
 
-Create rules around when actions can occur:
-- pass_receive can only happen after pass_attempt
-- interception can only occur after shot/pass_attempt
-- etc
-    
+Ideas:
+
 - When a player has the ball they can perform the following game actions:
     - kick_off
     - pass_attempt
@@ -44,7 +41,7 @@ In order for a game to flow actions can only happen in certain circumstances:
 
 Game class ideas:
 - possession
-- this could be worked out based on all of the above events?
+    - this could be worked out based on all of the above events?
 - player position when an action occurs
 - substitutions
 - time added on
@@ -66,6 +63,14 @@ Think about how to deal with offside:
 - maybe player positions should be recorded independently of game actions?
 - or maybe there should be an action for players that are not directly involved 
 in the current play. Every second we could record each players PlayerPosition action?
+
+Decide if a deflection can be intercepted?
+- How else would another player pick up the ball after a deflection?
+- Maybe a new action to 'collect' a loose ball?
+
+Commentary:
+- Create a commentary event listener
+    - Listen for all actions, generate commentary based on actions
 
 App Ideas:
 - Create an API to pull data from previous games
