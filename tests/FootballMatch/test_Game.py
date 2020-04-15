@@ -67,9 +67,10 @@ class GameTest(unittest.TestCase):
         assert(isinstance(tackle, Tackle))
     
     def test_passAttempt(self):
+        self.start_game_with_kick_off()
         pass_attempt = self.game.pass_attempt(self.homePlayer, 10)
 
-        self.eventDispatcher.dispatch_now.assert_called_once()
+        self.eventDispatcher.dispatch_now.assert_called_with(pass_attempt)
         assert(isinstance(pass_attempt, PassAttempt))
 
     def test_passReceive(self):

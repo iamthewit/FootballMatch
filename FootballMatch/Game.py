@@ -1,5 +1,6 @@
 from FootballMatch.GameAction.Rule.DeflectionRule import DeflectionRule
 from FootballMatch.GameAction.Rule.InterceptionRule import InterceptionRule
+from FootballMatch.GameAction.Rule.PassAttemptRule import PassAttemptRule
 from FootballMatch.Player import Player
 from FootballMatch.Score import Score
 from FootballMatch.Team import Team
@@ -72,6 +73,8 @@ class Game:
 
     def pass_attempt(self, player: Player, time_in_seconds: int) -> PassAttempt:
         pass_attempt = PassAttempt(player, time_in_seconds)
+        pass_attempt_rule = PassAttemptRule(pass_attempt, self.get_last_action())
+        pass_attempt_rule.check()
 
         self.__eventDispatcher.dispatch_now(pass_attempt)
         self.__actionLog.append(pass_attempt)
@@ -132,6 +135,8 @@ class Game:
 
     def kick_off(self, player: Player, time_in_seconds: int) -> KickOff:
         kick_off = KickOff(player, time_in_seconds)
+
         self.__eventDispatcher.dispatch_now(kick_off)
+        self.__actionLog.append(kick_off)
 
         return kick_off

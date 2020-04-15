@@ -1,25 +1,31 @@
 from typing import Optional
 
 from FootballMatch.GameAction.AbstractGameAction import AbstractGameAction
-from FootballMatch.GameAction.PassAttempt import PassAttempt
+from FootballMatch.GameAction.Deflection import Deflection
+from FootballMatch.GameAction.Interception import Interception
+from FootballMatch.GameAction.KickOff import KickOff
+from FootballMatch.GameAction.PassReceive import PassReceive
+from FootballMatch.GameAction.Rule.AbstractGameActionRule import AbstractGameActionRule
 from FootballMatch.GameAction.Run import Run
 from FootballMatch.GameAction.Save import Save
-from FootballMatch.GameAction.Shot import Shot
-
-from FootballMatch.GameAction.Rule.AbstractGameActionRule import AbstractGameActionRule
+from FootballMatch.GameAction.Tackle import Tackle
 
 
-class DeflectionRule(AbstractGameActionRule):
+class PassAttemptRule(AbstractGameActionRule):
     valid_previous_action_types = (
-        PassAttempt,
-        Shot
+        Deflection,
+        Interception,
+        KickOff,
+        PassReceive,
+        Run,
+        Save,
+        Tackle,
     )
 
     valid_next_action_types = (
-        PassAttempt,
-        Run,
-        Save,
-        Shot
+        Deflection,
+        Interception,
+        PassReceive,
     )
 
     def __init__(self, game_action: AbstractGameAction, previous_game_action: Optional[AbstractGameAction]):
@@ -30,10 +36,6 @@ class DeflectionRule(AbstractGameActionRule):
         if not isinstance(self.previous_game_action, self.valid_previous_action_types):
             return False
             # TODO: this could be accounted for in the super class maybe?
-
-        # If player who committed previous action is the same player that caused the deflection
-        if self.game_action.player.__eq__(self.previous_game_action.player):
-            return False
 
         # If the time of the action is less than the time of the previous action
         if self.game_action.time_in_seconds < self.previous_game_action.time_in_seconds:
