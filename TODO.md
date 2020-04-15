@@ -1,7 +1,13 @@
 # TODO
 
 WIP:
-    - Add tests for Interception Rule
+    - Add GameActionRules for:
+        - KickOff
+        - PassReceive
+        - Rune
+        - Save
+        - Shot
+        - Tackle
 
 Ideas:
 
@@ -39,12 +45,20 @@ In order for a game to flow actions can only happen in certain circumstances:
     - `Deflection` by a `Player` of either `Team` 
     - `Goal` (Note: Goals are not game actions, need to think about how they are recorded in a `Game`)
 
+Game Actions:
+    - Whistle (Kick Off, Half Time, Full Time, Foul)
+        - Separate classes for each type or one class with a param for the type 
+    - CollectLooseBall
+        - Think of a better name
+        - Can occur after a Deflection
+
 Game class ideas:
 - possession
     - this could be worked out based on all of the above events?
 - player position when an action occurs
 - substitutions
 - time added on
+- update stats after ever game action
 
 Manager class:
 - Team is managed by a manager
@@ -71,6 +85,8 @@ Decide if a deflection can be intercepted?
 Commentary:
 - Create a commentary event listener
     - Listen for all actions, generate commentary based on actions
+
+Referee Class
 
 App Ideas:
 - Create an API to pull data from previous games
